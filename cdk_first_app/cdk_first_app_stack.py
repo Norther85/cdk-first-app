@@ -20,3 +20,10 @@ class CdkFirstAppStack(cdk.Stack):
                             encryption=_s3.BucketEncryption.S3_MANAGED,
                             block_public_access=_s3.BlockPublicAccess.BLOCK_ALL
                             )
+
+        # Add output for bucket
+        output1 = core.CfnOutput(self, "MyBucketOutput",
+                                 value=bucket.bucket_name,
+                                 description=f"Bucket name",
+                                 export_name="MyBucketOutput"
+                                 )
